@@ -11,7 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class WeatherFetcher {
-    private static final String API_KEY = "0a5b5acad30a786d9c2f82f94b5ba112";  // Replace with your actual API key
+    private static final String API_KEY = "0a5b5acad30a786d9c2f82f94b5ba112";  
     private static final int TIMEOUT = 5000;
 
     public static String getWeather(String city) {
@@ -29,17 +29,14 @@ public class WeatherFetcher {
             int status = con.getResponseCode();
             String responseContent = readResponse(con, status);
 
-            // Print the full JSON response for debugging
             System.out.println("API Response: " + responseContent);
 
             JSONObject json = new JSONObject(responseContent);
 
-            // Check for API error
             if (json.optInt("cod", 200) != 200) {
                 return "API Error: " + json.optString("message", "Unknown error");
             }
 
-            // Ensure required keys are present
             if (!json.has("weather") || !json.has("main")) {
                 return "Error: Invalid weather data format";
             }
@@ -60,7 +57,7 @@ public class WeatherFetcher {
             return String.format("Weather: %s, Temperature: %.1f°C", weatherMain, temperature);
 
         } catch (Exception e) {
-            e.printStackTrace(); // Show full stack trace in console
+            e.printStackTrace(); 
             return "Error: " + e.getMessage();
         }
     }
