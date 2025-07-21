@@ -56,7 +56,7 @@ public class JavaSwing1 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String city = cityField.getText().trim();
         if (city.isEmpty()) {
-            resultLabel.setText("❌ Please enter a valid city name.");
+            resultLabel.setText("Please enter a valid city name.");
         } else {
 
             resultLabel.setText("No data now, but this is where it will show.");
